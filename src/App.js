@@ -1,9 +1,9 @@
-import './App.css';
+import { LandingPage } from "./pages";
+
+import "./App.css";
 
 function App() {
-  return (
-      <h1>Jobster</h1>
-  );
+    return <LandingPage />;
 }
 
 export default App;
