@@ -8,3 +8,5 @@ export { default as BigSideBar } from "./BigSideBar";
 export { default as FormSelect } from "./FormSelect";
 export { default as SearchContainer } from "./SearchContainer";
 export { default as JobsContainer } from "./JobsContainer";
+export { default as Job } from "./Job";
+export { default as Loading } from "./Loading";

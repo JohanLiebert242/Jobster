@@ -23,6 +23,9 @@ export const action =
                     Authorization: `Bearer ${user.token}`,
                 },
             });
+
+            console.log(res.data);
+
             toast.success("Job added!");
             store.dispatch(clearValue());
 

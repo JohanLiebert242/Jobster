@@ -1,6 +1,18 @@
+import Wrapper from "../assets/wrappers/SearchContainer";
+import { Form } from "react-router-dom";
+import TitleSection from "./TitleSection";
+import FormInput from "./FormInput";
+
 function SearchContainer() {
     return (
-        <h1>SearchContainer</h1>
+        <Wrapper>
+            <Form className="form" method="GET">
+                <TitleSection text="Search Form" />
+                <div className="form-center">
+                    <FormInput name="search" text="Search" type="text" />
+                </div>
+            </Form>
+        </Wrapper>
     );
 }
 
