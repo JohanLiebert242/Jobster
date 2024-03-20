@@ -9,6 +9,7 @@ import { customFetch } from "../utils/util";
 import { toast } from "react-toastify";
 import { logoutUser } from "../features/user/userSlice";
 import { useEffect } from "react";
+import { editJob } from "../features/jobs/AddJobSlice";
 
 export const action =
     (store) =>
@@ -23,8 +24,6 @@ export const action =
                     Authorization: `Bearer ${user.token}`,
                 },
             });
-
-            console.log(res.data);
 
             toast.success("Job added!");
             store.dispatch(clearValue());
@@ -64,6 +63,8 @@ function AddJob() {
         dispatch(handleInputChange({ name, value }));
     };
 
+    console.log(isEditing);
+
     useEffect(() => {
         if (!isEditing) {
             dispatch(
@@ -72,10 +73,27 @@ function AddJob() {
         }
     }, []);
 
+    useEffect(() => {
+        if (isEditing) {
+            dispatch(
+                editJob({
+                    jobId: editJobId,
+                    job: {
+                        position,
+                        company,
+                        jobLocation,
+                        status,
+                    },
+                })
+            );
+        }
+    }, []);
+
+
     return (
         <Wrapper>
             <Form method="POST" className="form">
-                <TitleSection text="Add Job" />
+                <TitleSection text={isEditing ? "Edit Job" : "Add Job"} />
                 <div className="form-center">
                     <FormInput
                         onChange={(e) => handleJobInput(e)}
